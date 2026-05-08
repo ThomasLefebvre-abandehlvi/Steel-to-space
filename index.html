@@ -4,117 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STEEL TO SPACE | BOOK IV</title>
-    <style>
-        :root {
-    --bg: #050505;
-    --nav-bg: #0a1505; 
-    --accent: #00ff66; /* Neon Green */
-    --silver: #c0c0c0; /* Warp Silver */
-    --text: #e0e0e0;
-    --white: #ffffff;
-}
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Garamond', serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-        }
-
-        /* --- STICKY TOP NAV --- */
-        .top-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 50px;
-            background: var(--nav-bg);
-            border-bottom: 2px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-
-        .current-chapter {
-            font-family: sans-serif;
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .nav-buttons { display: flex; gap: 10px; }
-
-        .btn {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 5px 12px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            border-radius: 3px;
-        }
-
-        .btn:hover { background: var(--accent); color: #000; }
-    a[href*="library"]:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px var(--accent);
-    background: var(--accent);
-    color: #000;
+   <style>
+    :root {
+        --bg: #050505;
+        --nav-bg: #020d05;
+        --accent: #00ff66; /* Neon Green */
+        --gold: #c0c0c0;   /* Space Silver */
+        --text: #afb8b1;
+        --white: #ffffff;
     }
 
-        /* --- FULLSCREEN OVERLAY MENU --- */
-        #indexOverlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 5, 5, 0.98);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 40px 20px;
-            box-sizing: border-box;
-        }
+    html, body {
+        background-color: var(--bg) !important;
+        color: var(--text) !important;
+        margin: 0; padding: 0;
+        font-family: 'Garamond', serif;
+        line-height: 1.8;
+        overflow-x: hidden;
+    }
 
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: var(--accent);
-            cursor: pointer;
-        }
+    .top-nav {
+        position: fixed !important;
+        top: 0; left: 0;
+        width: 100%; height: 60px;
+        background: var(--nav-bg) !important;
+        border-bottom: 2px solid var(--accent) !important;
+        display: flex !important;
+        align-items: center; justify-content: space-between;
+        padding: 0 20px; z-index: 99999 !important;
+        box-sizing: border-box;
+    }
 
-        .overlay-content { max-width: 600px; margin: 0 auto; }
-        .overlay-content h2 { color: var(--accent); border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 5px; }
-        .overlay-content ul { list-style: none; padding: 0; }
-        .overlay-content li { margin-bottom: 15px; }
-       .overlay-content a { color: #888; text-decoration: none; display: block; margin: 8px 0; font-size: 0.9rem; transition: 0.3s; }
-       .overlay-content a:hover { color: var(--accent); padding-left: 10px; }
+    #currentLabel {
+        color: var(--accent);
+        font-family: sans-serif; font-size: 0.8rem;
+        font-weight: bold; text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-        /* --- CONTENT WRAPPER --- */
-        main {
-            padding: 100px 20px 40px 20px;
-            max-width: 850px;
-            margin: 0 auto;
-        }
+    .nav-buttons { display: flex; gap: 10px; }
 
-        .unit-label { color: var(--accent); text-transform: uppercase; letter-spacing: 8px; font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 10px; }
-        h2 { font-size: 3rem; color: var(--white); margin: 0 0 60px 0; font-family: sans-serif; }
-        .chapter { margin-bottom: 150px; text-align: justify; }
-       h3 { font-size: 1.8rem; color: var(--accent); border-left: 4px solid var(--silver); padding-left: 15px; }
-        p { font-size: 1.3rem; margin-bottom: 35px; }
-        .first-letter { float: left; font-size: 5rem; line-height: 0.7; padding-top: 10px; padding-right: 15px; color: var(--accent); font-family: sans-serif; font-weight: bold; }
+    .btn {
+        background: transparent; border: 1px solid var(--accent);
+        color: var(--accent); padding: 6px 15px; font-size: 0.7rem;
+        cursor: pointer; text-transform: uppercase; font-weight: bold;
+        transition: 0.3s;
+    }
+    .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 10px var(--accent); }
 
-        footer { text-align: center; color: #444; padding: 100px 0; font-size: 0.9rem; border-top: 1px solid #222; }
-    </style>
+    main {
+        display: block !important;
+        max-width: 800px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 120px 20px 100px 20px !important;
+        background-color: var(--bg);
+        position: relative; box-sizing: border-box !important;
+    }
+
+    section, .content-wrap, .chapter {
+        width: 100% !important; max-width: 100% !important;
+        margin: 0 auto !important; box-sizing: border-box !important;
+    }
+
+    .unit-label { color: var(--accent); text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; font-weight: bold; }
+    h2 { font-size: 2.5rem; color: var(--white); margin: 10px 0 50px 0; font-family: sans-serif; }
+    .chapter { margin-bottom: 120px; text-align: justify; }
+    h3 { font-size: 1.8rem; color: var(--accent); margin-bottom: 30px; font-family: sans-serif; border-left: 4px solid var(--gold); padding-left: 15px; }
+    p { font-size: 1.3rem; margin-bottom: 35px; }
+
+    .first-letter {
+        float: left; font-size: 5rem; line-height: 0.7;
+        padding-top: 10px; padding-right: 15px;
+        color: var(--gold); font-family: sans-serif; font-weight: bold;
+    }
+
+    #indexOverlay {
+        display: none; position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%; background: rgba(5, 5, 5, 0.98);
+        z-index: 1000000 !important; overflow-y: auto;
+        padding: 40px 20px; box-sizing: border-box;
+    }
+
+    .close-btn { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: var(--accent); cursor: pointer; }
+    .overlay-content { max-width: 600px; margin: 0 auto; }
+    .overlay-content h2 { color: var(--accent); border-bottom: 1px solid #333; padding-bottom: 10px; font-family: sans-serif; }
+    
+    .unit-group { border-bottom: 1px solid #222; margin-bottom: 5px; }
+    .unit-header {
+        width: 100%; background: none; border: none; color: var(--gold);
+        padding: 15px 0; text-align: left; font-size: 1.1rem; cursor: pointer;
+        display: flex; justify-content: space-between; font-weight: bold; font-family: sans-serif;
+    }
+    .unit-chapters { display: none; padding-left: 20px; background: #0a0a0a; }
+    
+    .overlay-content a {
+        text-decoration: none; color: #888; display: block;
+        padding: 12px 0; border-bottom: 1px solid #111; font-size: 1rem;
+    }
+    .overlay-content a:hover { color: var(--accent); padding-left: 10px; transition: 0.3s; }
+
+    .fixed-hub-btn {
+        position: fixed !important; bottom: 20px; right: 20px;
+        z-index: 99998 !important; background: #000; color: #fff;
+        padding: 12px 25px; text-decoration: none; font-weight: bold;
+        font-family: sans-serif; font-size: 0.7rem; border: 2px solid var(--accent);
+        border-radius: 50px; box-shadow: 0 0 15px rgba(0, 255, 102, 0.2); transition: 0.4s;
+    }
+    .fixed-hub-btn:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 102, 0.4); }
+</style>
 </head>
 <body>
 
@@ -356,23 +354,65 @@
             </footer>
         </div>
     </main>
-
     <script>
-        function toggleIndex() {
-            const overlay = document.getElementById('indexOverlay');
-            overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
+    // 1. INDEX OVERLAY DISPLAY TOGGLE
+    function toggleIndex() {
+        const overlay = document.getElementById('indexOverlay');
+        const hubBtn = document.querySelector('.fixed-hub-btn');
+        const body = document.body;
+
+        if (overlay.style.display === 'block') {
+            overlay.style.display = 'none';
+            if (hubBtn) hubBtn.style.display = 'block';
+            body.style.overflow = 'auto';
+        } else {
+            overlay.style.display = 'block';
+            if (hubBtn) hubBtn.style.display = 'none';
+            body.style.overflow = 'hidden';
         }
-        const label = document.getElementById('currentLabel');
-        const chapters = document.querySelectorAll('.chapter');
-        window.onscroll = function() {
-            let current = "Steel To Sand";
-            chapters.forEach(chapter => {
-                const rect = chapter.getBoundingClientRect();
-                if (rect.top <= 100) { current = chapter.querySelector('h3').innerText; }
-            });
-            label.innerText = current;
-        };
-    </script>
+    }
+
+    // 2. ACCORDION AUTO-CLOSE UTILITY (8 Units Total)
+    function toggleUnit(button) {
+        const allChapters = document.querySelectorAll('.unit-chapters');
+        const allButtons = document.querySelectorAll('.unit-header');
+        const currentChapters = button.nextElementSibling;
+
+        allChapters.forEach((chapter, index) => {
+            if (chapter !== currentChapters) {
+                chapter.style.display = 'none';
+                allButtons[index].querySelector('span').innerText = '+';
+            }
+        });
+
+        if (currentChapters.style.display === 'block') {
+            currentChapters.style.display = 'none';
+            button.querySelector('span').innerText = '+';
+        } else {
+            currentChapters.style.display = 'block';
+            button.querySelector('span').innerText = '-';
+        }
+    }
+
+    // 3. REAL-TIME CHAPTER TRACKER
+    const label = document.getElementById('currentLabel');
+    const chapters = document.querySelectorAll('.chapter');
+
+    window.onscroll = function() {
+        let current = "Steel to Space";
+        if (window.scrollY < 100) {
+            label.innerText = "Steel to Space";
+            return;
+        }
+        chapters.forEach(chapter => {
+            const rect = chapter.getBoundingClientRect();
+            if (rect.top <= 120 && rect.top > 0) {
+                current = chapter.querySelector('h3').innerText;
+            }
+        });
+        label.innerText = current;
+    };
+</script>
     <!-- FIXED LIBRARY BUTTON -->
 <a href="https://thomaslefebvre-abandehlvi.github.io/Steel-from-sand-library/" 
    style="position: fixed; bottom: 20px; right: 20px; z-index: 5000; background: #000; color: #fff; border: 2px solid var(--accent); padding: 10px 20px; text-decoration: none; border-radius: 50px; font-weight: bold; font-family: sans-serif; font-size: 0.8rem; box-shadow: 0 0 15px rgba(204, 0, 255, 0.4); transition: 0.3s;">
